@@ -9,6 +9,12 @@ void initChunk(Chunk* chunk) {
     chunk->code = NULL;
 }
 
+void freeChunk(Chunk* chunk) {
+    // deallocate all chunk memory and use initchunk to zero out fields
+    FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
+    initChunk(chunk);
+}
+
 void writeChunk(Chunk* chunk, uint8_t byte) {
     // if capacity is less than count then:
     //  Allocate a new array with more capacity.
