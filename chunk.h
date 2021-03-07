@@ -5,6 +5,8 @@
 #include "value.h"
 
 typedef enum {
+    // produces a particular constant/loads the constant for use
+    OP_CONSTANT,
     OP_RETURN, // return from current fxn
 } OpCode;
 
@@ -18,5 +20,6 @@ typedef struct {
 void initChunk(Chunk* chunk);
 void freeChunk(Chunk* chunk);
 void writeChunk(Chunk* chunk, uint8_t byte);
+int addConstant(Chunk* chunk, Value value);
 
 #endif

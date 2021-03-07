@@ -9,7 +9,7 @@ void initValueArray(ValueArray* array) {
     array->values = NULL;
 }
 
-void writeValueArray(ValueArray* array) {
+void writeValueArray(ValueArray* array, Value value) {
     if (array->capacity < array->count + 1) {
         int oldCapacity = array->capacity;
         array->capacity = GROW_CAPACITY(oldCapacity);
@@ -23,4 +23,8 @@ void writeValueArray(ValueArray* array) {
 void freeValueArray(ValueArray* array) {
     FREE_ARRAY(Value, array->values, array->capacity);
     initValueArray(array);
+}
+
+void printValue(Value value) {
+    printf("%g", value);
 }
